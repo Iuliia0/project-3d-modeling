@@ -30,13 +30,14 @@ const writeGreeting = () => {
   addItem()
   let time = date.toLocaleTimeString('en')
   let hours = +date.toLocaleTimeString(['en'], {hour: '2-digit'}).split('').splice(0, 2).join('')
+
     if (time.includes('AM') && (hours >= 6 && hours <= 11)) {
     item.textContent = 'Доброе утро'
-  } else if (time.includes('PM') && hours <= 6 || hours === 12) {
+  } else if (time.includes('PM') && (hours < 6 || hours === 12)) {
     item.textContent = 'Добрый день'
-  }  else if (time.includes('PM') && (hours > 6 && hours !== 12)) {
+  }  else if (time.includes('PM') && (hours >= 6 && hours !== 12)) {
     item.textContent = 'Добрый вечер'
-  }    else if ((time.includes('AM') && hours < 6)) {
+  }    else if (time.includes('AM') && (hours < 6 || hours === 12)) {
     item.textContent = 'Доброй ночи'
   } 
 

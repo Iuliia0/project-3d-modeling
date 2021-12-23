@@ -30,12 +30,10 @@ const timer = (deadline) => {
       timerHours.textContent = addZero(getTime.hours)
       timerMinutes.textContent = addZero(getTime.minutes)
       timerSeconds.textContent = addZero(getTime.seconds)
-      console.log('hello')
     } else {
       timerHours.textContent = '00'
       timerMinutes.textContent = '00'
       timerSeconds.textContent = '00'
-      console.log('привет')
       clearInterval(timeId)
     }
   }
