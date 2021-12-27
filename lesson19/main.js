@@ -5,6 +5,8 @@ const week = ['Понедельник', 'вторник', 'среда', 'чет�
 const wrapper  = document.createElement('div')
 const list = document.createElement('ul')
 const li = document.createElement('li')
+let item 
+
 
 wrapper.className = 'wrapper'
 document.body.append(wrapper)
@@ -35,9 +37,9 @@ const writeGreeting = () => {
     item.textContent = 'Доброе утро'
   } else if (time.includes('PM') && (hours < 6 || hours === 12)) {
     item.textContent = 'Добрый день'
-  }  else if (time.includes('PM') && (hours >= 6 && hours !== 12)) {
+  } else if (time.includes('PM') && (hours >= 6 && hours !== 12)) {
     item.textContent = 'Добрый вечер'
-  }    else if (time.includes('AM') && (hours < 6 || hours === 12)) {
+  } else if (time.includes('AM') && (hours < 6 || hours === 12)) {
     item.textContent = 'Доброй ночи'
   } 
 
@@ -66,7 +68,6 @@ const calculateTime = (deadline) => {
   let secondsBeforeNewYear = (newYear - new Date().getTime()) / 1000
   let daysBeforeNewYear = Math.floor(secondsBeforeNewYear / 60 / 60 / 24)
   item.textContent = `До нового года осталось ${daysBeforeNewYear} дней`
-
 }
 
 
@@ -77,13 +78,6 @@ const calculateTime = (deadline) => {
 
 
 
-  //   if (time.includes('AM') && time >= '6:00:00 AM' || time.includes('AM') && time === '11:00:00 AM') {
-  //   item.textContent = 'Доброе утро'
-  // } else if (time.includes('PM') && time <= '6:00:00 PM') {
-  //   item.textContent = 'Добрый день'
-  // }  else if ((time.includes('PM') && time > '6:00:00 PM') || (time.includes('PM') && time <= '10:00:00 PM')) {
-  //   item.textContent = 'Добрый вечер'
-  // }    else if ((time.includes('PM') && time > '10:00:00 PM') || (time.includes('AM') && time > '5:00:00 AM')) {
-  //   item.textContent = 'Доброй ночи'
-  // } 
+
+
 
