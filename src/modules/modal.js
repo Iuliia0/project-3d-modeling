@@ -1,30 +1,11 @@
+import { animate } from './helpers'
+
 const modal = () => {
   const buttons = document.querySelectorAll('.popup-btn')
   const modal = document.querySelector('.popup')
   const modalBlock = document.querySelector('.popup-content')
 
   let offsetWidth
-  let open = true
-
-  const animateOpen = () => {
-    let idInterval = requestAnimationFrame(animateOpen)
-    if (open) {
-      modal.style.display = 'block'
-      modalBlock.style.transform = 'translateY(100%)'
-      offsetWidth = document.documentElement.offsetWidth
-      open = false
-    } else if (!open && offsetWidth <= 768) {
-      modalBlock.style.transition = 'all 0s'
-      modalBlock.style.transform = 'translateY(0)'
-      cancelAnimationFrame(idInterval)
-      open = true
-    }  else  if (!open && offsetWidth > 768){
-      modalBlock.style.transition = 'all 1s'
-      modalBlock.style.transform = 'translateY(0)'
-      cancelAnimationFrame(idInterval)
-      open = true
-    }
-  }
 
   const animateClose = () => {
       modal.style.display = 'none'
@@ -50,10 +31,30 @@ const modal = () => {
 
     }
   }
-
   buttons.forEach(btn => {
-    btn.addEventListener('click', animateOpen)
-  })
+    
+    modalBlock.style.top = '0'
+    btn.addEventListener('click', () => {
+      animate({
+      duration: 1000,
+      timing(timeFraction) {
+        return timeFraction;
+      },
+      draw(progress) {
+        offsetWidth = document.documentElement.offsetWidth
+        if (offsetWidth > 768) {
+          modal.style.display = 'block'
+          modalBlock.style.top = (20 * progress) +'%'
+        } else if (offsetWidth <= 768) {
+          modal.style.display = 'block'
+          modalBlock.style.top = '200px'
+          
+        } 
+      }
+      })
+    })
+
+    })
 
   modal.addEventListener('click', (e) => {
     if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
@@ -65,4 +66,3 @@ const modal = () => {
 }
 
 export default modal
-
