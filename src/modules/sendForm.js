@@ -5,7 +5,7 @@ const sendForm = ({ idForms = [], someElem = [] }) => {
     const statusBlock = document.createElement('div')
     const loadText = 'Загрузка'
     const errorText = 'Ошибка'
-    const successText = 'Спасио! Наш менеджер с Вами свжется'
+    const successText = 'Спасибо! Наш менеджер с Вами свжется'
 
     const validate = (list) => {
       let success = true
@@ -26,7 +26,6 @@ const sendForm = ({ idForms = [], someElem = [] }) => {
       const formElements = form.querySelectorAll('input')
       const formData = new FormData(form)
       const formBody = {}
-
       statusBlock.textContent = loadText
       form.append(statusBlock)
 
@@ -54,6 +53,7 @@ const sendForm = ({ idForms = [], someElem = [] }) => {
         })
         .catch(error => {
           statusBlock.textContent = errorText
+
         })
       } else {
         alert('Данне не валидныы')
@@ -62,7 +62,7 @@ const sendForm = ({ idForms = [], someElem = [] }) => {
     
     try {
       if (!form) {
-        throw new Error('Верите форму на место, пожалуста)')
+        throw new Error('Верните форму на место, пожалуйста)')
       }
 
       form.addEventListener('submit', (event) => {
