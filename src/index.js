@@ -16,7 +16,7 @@ tabs()
 slider({containerSlider: '.portfolio-content', itemSlider: '.portfolio-item', containerDot: '.portfolio-dots'})
 calc(100)
 sendForm({ 
-  idForm: 'form1',
+  idForms: ['form1', 'form2', 'form3'],
   someElem: [
     {
       type: 'block',
