@@ -1,7 +1,6 @@
 const sendForm = ({ idForms = [], someElem = [] }) => {
   idForms.forEach((idForm) => {
     let form = document.querySelector(`#${idForm}`)
-
     const statusBlock = document.createElement('div')
     const loadText = 'Загрузка'
     const errorText = 'Ошибка'
@@ -40,6 +39,7 @@ const sendForm = ({ idForms = [], someElem = [] }) => {
           formBody[elem.id] = element.textContent
         } else if (elem.type === 'input') {
           formBody[elem.id] = element.value
+          
         }
       })
 

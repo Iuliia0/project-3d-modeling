@@ -36,7 +36,7 @@ const timer = (deadline) => {
       clearInterval(timeId)
     }
   }
-  
+  updateClock()
   timeId = setInterval(updateClock, 1000)
   
 }

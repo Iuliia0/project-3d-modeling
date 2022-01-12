@@ -6,9 +6,9 @@ const validation = () => {
   const regText = /[^а-я \s \-]/gi
   const regMessage = /[^а-я0-9 \s\.\,\:\;\'\"\-]/gi
   const regEmail = /([^\@  \_ \. \! \~ \* \' \w \-]+)/gi
-  const regTel = /[^0-9\( \)\+\-]/gi
+  const regTel = /([\+7|7|8])[(]?(\d{3})[)]?(\d{3})[-]?(\d{2})[-]?(\d{2})/g;
   const regCalcBlock = /^[0-9]+/g
-
+  
   inputCalcBlock.forEach(input => {
     input.type = ''
     input.addEventListener('input', (e) => {
@@ -33,10 +33,15 @@ const validation = () => {
   })
 
   telInputAll.forEach(tel => {
-    tel.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(regTel, '')
+    tel.addEventListener('blur', (e) => {
+      if(regTel.test(e.target.value)) {
+        tel.value = e.target.value
+      } else {
+        tel.value = e.target.value.replace(/[а-яa-z \ё \Ё \@  \_ \. \! \~ \* \' \: \; \" \# \№ \^ \&]+/g, '').replace(/\++/g, '+').replace(/^\d\(\)\-\+/g, '').replace(/^[\-\s]+/gm, '').replace(/[\-\s]+$/gm, '')
+      }
     })
   })
+
   inputMessage.addEventListener('input', (e) => {
     e.target.value = e.target.value.replace(regMessage, '')
   })
