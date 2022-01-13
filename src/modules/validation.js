@@ -12,7 +12,7 @@ const validation = () => {
   inputCalcBlock.forEach(input => {
     input.type = ''
     input.addEventListener('input', (e) => {
-      e.target.value = e.target.value.match(regCalcBlock, '')
+        e.target.value = e.target.value.match(regCalcBlock, '')
     })
   })
 
@@ -21,14 +21,14 @@ const validation = () => {
   const telInputAll = document.querySelectorAll('input[type="tel"]')
 
   textInputAll.forEach(text => {
-    text.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(regText, '')
+    text.addEventListener('change', (e) => {
+        e.target.value = e.target.value.replace(regText, '').trim()
     })
   })
 
   emailInputAll.forEach(email => {
-    email.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(regEmail, '')
+    email.addEventListener('change', (e) => {
+        e.target.value = e.target.value.replace(regEmail, '').trim()
     })
   })
 
@@ -43,7 +43,7 @@ const validation = () => {
   })
 
   inputMessage.addEventListener('input', (e) => {
-    e.target.value = e.target.value.replace(regMessage, '')
+      e.target.value = e.target.value.replace(regMessage, '')
   })
 }
 

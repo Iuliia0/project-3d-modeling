@@ -5,10 +5,17 @@ const sendForm = ({ idForms = [], someElem = [] }) => {
     const loadText = 'Загрузка'
     const errorText = 'Ошибка'
     const successText = 'Спасибо! Наш менеджер с Вами свжется'
+    
 
     const validate = (list) => {
       let success = true
       return success
+    }
+
+    const clear = () => {
+      statusBlock.textContent = ''
+      document.querySelector('.popup').style.display = 'none'
+      
     }
 
     const sendData = (data) => {
@@ -34,28 +41,32 @@ const sendForm = ({ idForms = [], someElem = [] }) => {
 
       someElem.forEach(elem => {
         const element = document.getElementById(elem.id)
-        console.log(element)
-        if (elem.type === 'block') {
-          formBody[elem.id] = element.textContent
-        } else if (elem.type === 'input') {
-          formBody[elem.id] = element.value
-          
+        if (+element.textContent > 0) {
+          if (elem.type === 'block') {
+            formBody[elem.id] = element.textContent
+          } else if (elem.type === 'input') {
+            formBody[elem.id] = element.value
+          }
         }
       })
-
       if (validate(formElements)) {
+          for (let key in formBody) {
+            formBody[key] = formBody[key].trim()
+          }
+
         sendData(formBody).then(data => {
           statusBlock.textContent = successText
-
           formElements.forEach(input => {
-            input.value = ''
+            input.value = '', 2000
           })
+          setTimeout(clear, 2000)
         })
         .catch(error => {
           statusBlock.textContent = errorText
-
+          
+          
         })
-      } else {
+      } else{
         alert('Данне не валидныы')
       }
     }
