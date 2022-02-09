@@ -8,7 +8,7 @@ import calc from './modules/calc'
 import sendForm from './modules/sendForm'
 
 
-timer('15 january 2022')
+timer('15 march 2022')
 menu()
 modal()
 validation()
