@@ -3,10 +3,10 @@ const timer = (deadline) => {
   const timerMinutes = document.getElementById('timer-minutes')
   const timerSeconds = document.getElementById('timer-seconds')
   let timeId
-
+console.log('timer')
   const getTimeRemaining = () => {
-    let dateStop = new Date(deadline).getTime()
-    let dateNow = new Date().getTime()
+    let dateStop = new Date(deadline).getTime();
+    let dateNow = new Date().getTime();
     let timeRemaining = (dateStop - dateNow) / 1000 
     let hours = Math.floor(timeRemaining / 60 / 60)
     let minutes = Math.floor((timeRemaining / 60) % 60)
